@@ -1,0 +1,40 @@
+*{
+  margin:0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.app{
+  border: 4px solid red;
+   position: relative;
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+  }
+
+/* App.css */
+.app-container {
+  position: relative; /* This container will hold the canvas and other content */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Hide overflowing canvas */
+}
+
+.app {
+  position: relative; /* Maintain other content on top of the canvas */
+  z-index: 1; /* Make sure other content is above the canvas */
+}
+
+/* Style the canvas to cover the full screen */
+.canvas-container {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  width: 80%;
+  height: 80%;
+  z-index: -1; /* Position the canvas behind other content */
+}
+
+
+

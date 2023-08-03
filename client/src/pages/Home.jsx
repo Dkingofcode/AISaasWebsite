@@ -5,6 +5,7 @@ import {CustomButton} from '../components';
 import state from '../store';
 import { headContainerAnimation, headContentAnimation, headTextAnimation, slideAnimation } from '../config/motion';
 //import state from "../store";
+import '../App.css';
 
 const Home = () => {
   const snap = useSnapshot(state);
@@ -21,7 +22,7 @@ const Home = () => {
            />
            </motion.header>
 
-           <motion.div className='home-content' {...headContainerAnimation}>
+           <motion.div className='home-content border' {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
                <h1 className='text-7xl font-bold'>
                 LET'S <br className="xl:block hidden" /> DO IT.

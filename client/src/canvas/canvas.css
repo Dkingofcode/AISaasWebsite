@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.canvas {
+    top: 40;
+    left: 0;
+    top: 19px;
+    z-index: -1; /* Make sure the canvas is behind other content */ 
+  }
+   
