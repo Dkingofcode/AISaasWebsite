@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.hidden-input{
+    display: none;
+}
+
+.filepicker-label{
+    cursor: pointer;
+    border: 1px solid rgb(156, 152, 152);
+    width: 150px;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+
+
+.filepicker-container{
+    border: 1px solid rgb(156, 152, 152);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}

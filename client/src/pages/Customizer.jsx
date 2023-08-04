@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from 'valtio';
-
+import "./Customizer.css";
 import  config  from '../config/config';
 import state from '../store';
 import { download } from '../assets';
 import { downloadCanvasToImage, reader } from '../config/helpers';
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
-import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
+import { AIPicker, ColorPicker, CustomButton, FilePicker,  Tab } from '../components';
 
 const Customizer = () => {
    const snap = useSnapshot(state);
@@ -33,12 +33,30 @@ const Customizer = () => {
               readFile={readFile}
             />
         case "aipicker":
-            return <AIPicker />
-            
+            return <AIPicker 
+               prompt={prompt}
+               setPrompt={setPrompt}
+               generatingImg={generatingImg}
+               handleSubmit={handleSubmit}
+            />
         default:
             return null;    
     }
   }
+
+     const handleSubmit = async (type) => {
+        if(!prompt) return alert("Please enter a prompt");
+
+        try{
+           // call our backend to generate an ai image!
+        }catch (error){
+           alert(error) 
+        }finally {
+          setGeneratingImg(false);
+          setActiveEditorTab("");  
+        }
+     }
+
 
    const handleDecals = (type, result) => {
      const decalType = DecalTypes[type];
@@ -61,6 +79,14 @@ const Customizer = () => {
             state.isLogoTexture = true;
             state.isFullTexture = false;    
       }
+
+      // after setting the state, update the activeFilterTab
+      setActiveFilterTab((prevState) => {
+        return{
+            ...prevState,
+            [tabName]: !prevState[tabName]
+        }
+      })
     }
      
     const readFile = (type) => {
@@ -81,11 +107,10 @@ const Customizer = () => {
          className='absolute top-0 left-0 z-50 p-5' 
          {...slideAnimation('left')}>
           <div className='flex items-center min-h-screen'>
-            <div className="editortabs-container tabs flex flex-col gap-3">
+            <div className="editortabs-container tabs flex flex-col rounded-lg gap-3">
                {EditorTabs.map((tab) => (
                 <Tab key={tab.name} 
                  tab={tab}
-                 className="border w-5"
                  handleClick={() => setActiveEditorTab(tab.name)}  
                  />
                ))}
@@ -112,8 +137,8 @@ const Customizer = () => {
                key={tab.name} 
                tab={tab} 
                isFilterTab 
-               isActiveTab=""
-               handleClick={() => {}}
+               isActiveTab={activeFilterTab[tab.name]}
+               handleClick={() => handleActiveFilterTab(tab.name)}
                />
            ))}
          </motion.div>
