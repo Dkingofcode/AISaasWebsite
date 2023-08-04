@@ -18,11 +18,11 @@ const Home = () => {
              <img
               src='./threejs.png' 
               alt='logo'
-              className='w-8 h-8 object-contain border'
+              className='w-8 h-8 object-contain'
            />
            </motion.header>
 
-           <motion.div className='home-content border' {...headContainerAnimation}>
+           <motion.div className='home-content' {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
                <h1 className='text-7xl font-bold'>
                 LET'S <br className="xl:block hidden" /> DO IT.
