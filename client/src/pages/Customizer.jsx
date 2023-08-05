@@ -13,7 +13,9 @@ import { AIPicker, ColorPicker, CustomButton, FilePicker,  Tab } from '../compon
 const Customizer = () => {
    const snap = useSnapshot(state);
 
+   const [prompt, setPrompt] = useState('');
    const [file, setFile] = useState('');
+   
    const [generatingImg, setGeneratingImg] = useState(false);
 
    const [activeEditorTab, setActiveEditorTab] = useState("");
@@ -54,7 +56,7 @@ const Customizer = () => {
            const response = await fetch('http://localhost:8080/api/v1/dalle',  {
              method: "POST",
              headers: {
-                'Content-type': 'application/json'
+                'Content-Type': 'application/json'
              },
              body: JSON.stringify({
                 prompt,
@@ -62,8 +64,10 @@ const Customizer = () => {
            })
  
            const data = await response.json();
-           handleDecals(type, `data:image/png;base64,${data.photo}`)
 
+           console.log(data);
+           console.log(data.photo);
+           handleDecals(type, `data:image/png;base64,${data.photo}`)
         }catch (error){
            alert(error) 
         }finally {
@@ -90,6 +94,7 @@ const Customizer = () => {
         break;
         case "stylishShirt":
             state.isFullTexture = !activeFilterTab[tabName];
+        break;    
         default:
             state.isLogoTexture = true;
             state.isFullTexture = false;    

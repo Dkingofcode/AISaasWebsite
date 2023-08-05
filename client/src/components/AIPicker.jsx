@@ -1,19 +1,19 @@
-import React from 'react'
-
+import React from 'react';
 import CustomButton from "./CustomButton";
-import { Title } from '../../../../Netmovie-clone/src/components/jumbotron/styles/jumbotron';
+import "./AIPicker.css"; 
 
 const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
   return (
-    <div>
+    <div className='aipicker-container border rounded-lg absolute left-32 top1 w-72 h-66'>
       <textarea 
          placeholder='Ask AI...' 
-         rows={5} 
+         rows={9} 
          value={prompt} 
          onChange={(e) => setPrompt(e.target.value)}
-         className='aipicker-textarea' />
+         className='aipicker-textarea w-60 h-52 mb-7 ml-3 rounded-md' 
+         />
 
-         <div>
+         <div className='flex flex-wrap gap-3 bg-transparent'>
             {generatingImg ? ( 
             <CustomButton 
             type="outline" 

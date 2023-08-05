@@ -1,0 +1,28 @@
+.aipicker-container{
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+
+.aipicker-textarea{
+    background: rgba(255, 255, 255, 0); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    outline:  none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
